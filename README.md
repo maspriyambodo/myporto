@@ -1,124 +1,82 @@
-# Programmer Portfolio
+# Professional Portfolio Site
 
-A modern, responsive portfolio website built with React, Tailwind CSS, and React Router v7.
-
-## Project Overview
-
-This is a single-page application featuring:
-
-- Home page with hero section
-- About section with bio and tech stack
-- Projects gallery with project cards
-- Skills showcase with categorized skills
-- Contact form (UI only, no backend integration)
-
-## Features
-
-- Responsive design (mobile-first)
-- Dark mode toggle with localStorage persistence
-- Smooth transitions
-- Lazy loading for route components
-- SEO-friendly with meta tags
-- Dockerized for easy deployment
+A professional portfolio website for a Fullstack Web Developer, SysAdmin, and Database Administrator.
 
 ## Tech Stack
 
-- Frontend: React 19
-- Routing: React Router v7 (createBrowserRouter)
-- Styling: Tailwind CSS
-- Icons: Lucide React
-- Build Tool: Vite
-- Container: Docker + Nginx
+- **Frontend:** React 19 + TypeScript
+- **Styling:** Tailwind CSS 4
+- **Icons:** Lucide React
+- **Build Tool:** Vite
+- **Deployment:** Docker + Nginx
 
-## Local Development
+## Features
+
+- **Hero Section:** High-impact headline with key value propositions.
+- **About Me:** Professional summary focused on problem-solving.
+- **Skills:** Categorized technical expertise (Frontend, Backend, DevOps, Database).
+- **Services:** Freelance service offerings.
+- **Projects:** Detailed case studies with Problem, Solution, and Result.
+- **Tech Stack:** Visual representation of core tools.
+- **Contact:** Functional contact form (dummy) and social links.
+- **Responsive:** Mobile-first design.
+- **Production Ready:** Optimized Docker configuration with Nginx.
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js (v18+)
 - npm
+- Docker (optional, for production)
 
-### Installation
+### Development
 
-1. Clone the repository
-2. Navigate to the project directory: `cd portfolio-site`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm run dev`
+1. Install dependencies:
 
-The application will be available at `http://localhost:5173`
-
-## Build for Production
-
-To build and preview locally:
-
-1. Build the application: `npm run build`
-2. Preview the build: `npm run preview`
-
-## Docker Build & Run
-
-### Prerequisites
-
-- Docker
-- Docker Compose
-
-### Running with Docker Compose
-
-1. From the project root, run:
-   ```
-   docker-compose up --build
+   ```bash
+   npm install
    ```
 
-2. The application will be available at `http://localhost:3000`
+2. Start the development server:
 
-### Manual Docker Build
-
-1. Build the image:
-   ```
-   docker build -t portfolio-site .
+   ```bash
+   npm run dev
    ```
 
-2. Run the container:
+3. Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Production with Docker
+
+1. Build and run the container:
+
+   ```bash
+   docker-compose up -d --build
    ```
-   docker run -p 3000:80 portfolio-site
-   ```
+
+2. Access the site at [http://localhost:3000](http://localhost:3000).
 
 ## Project Structure
 
 ```
 src/
-  components/          # Reusable components
-  layouts/             # Layout components (RootLayout, MainLayout)
-  pages/               # Page components
-  hooks/               # Custom hooks
-  styles/              # Additional styles
-  utils/               # Utility functions
-public/                # Static assets
+├── assets/             # Static assets
+├── components/         # Reusable React components
+│   ├── UI.tsx          # Base UI components (Button, Card, Section)
+│   ├── Layout.tsx      # Navbar and Footer
+│   ├── Hero.tsx        # Hero section
+│   ├── About.tsx       # About section
+│   ├── Skills.tsx      # Skills section
+│   ├── Services.tsx    # Services section
+│   ├── Projects.tsx    # Projects section
+│   ├── TechStack.tsx   # Tech stack section
+│   └── Contact.tsx     # Contact section
+├── utils/
+│   └── data.ts         # Dummy data and interfaces
+├── App.tsx             # Main application component
+└── main.tsx            # Entry point
 ```
 
 ## Deployment
 
-The application is containerized and can be deployed to any platform that supports Docker containers, such as:
-
-- AWS ECS/ECR
-- Google Cloud Run
-- Azure Container Instances
-- DigitalOcean App Platform
-- Heroku with Docker support
-
-## Customization
-
-- Update personal information in the page components
-- Modify colors and styling through Tailwind classes
-- Add or remove pages by updating the router configuration
-- Extend the project with additional features as needed
-
-## Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-
-## License
-
-This project is licensed under the MIT License.
+The project is configured for easy deployment using Docker. The `Dockerfile` uses a multi-stage build to keep the production image small and secure, serving the static assets via Nginx with optimized configuration (Gzip, caching, security headers).
