@@ -6,3 +6,8 @@ services:
     ports:
       - '3001:80'
     restart: unless-stopped
+
+networks:
+  ternasys:
+      name: nginx-proxy_network
+      external: true
