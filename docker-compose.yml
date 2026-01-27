@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  frontend:
+  myporto_frontend:
     build: .
     ports:
       - '3001:80'
