@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import { lazy } from 'react';
 import './index.css';
 import RootLayout, { ErrorBoundary } from './layouts/RootLayout';
-import MainLayout from './layouts/MainLayout';
+import MainLayout from './components/Layout';
 
 // Lazy load components
 const Home = lazy(() => import('./components/Home'));

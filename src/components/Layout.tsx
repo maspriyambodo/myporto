@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet, Link } from 'react-router';
 import {
   Menu,
   X,
@@ -48,13 +49,13 @@ export const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { name: 'Home', href: '#hero' },
-    { name: 'Tech Stack', href: '#techstack' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Services', href: '#services' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#hero', isHash: true },
+    { name: 'Tech Stack', href: '#techstack', isHash: true },
+    { name: 'About', href: '#about', isHash: true },
+    { name: 'Skills', href: '#skills', isHash: true },
+    { name: 'Services', href: '#services', isHash: true },
+    { name: 'Projects', href: '#projects', isHash: true },
+    { name: 'Contact', href: '#contact', isHash: true },
   ];
 
   return (
@@ -66,8 +67,8 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a
-          href="#"
+        <Link
+          to="/"
           className="flex items-center gap-2 text-2xl font-bold text-gray-900 dark:text-white group"
         >
           <div className="p-2 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg group-hover:scale-110 transition-transform duration-300">
@@ -76,7 +77,7 @@ export const Navbar: React.FC = () => {
           <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
             Dev<span className="gradient-text-blue">Ops</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -299,3 +300,17 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+const Layout: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Layout;
