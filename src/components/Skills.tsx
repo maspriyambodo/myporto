@@ -23,7 +23,6 @@ export const Skills: React.FC = () => {
       id="skills"
       title="Technical Skills"
       subtitle="A comprehensive overview of my technical expertise across the full stack and infrastructure."
-      className="bg-white"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {skills.map((skillGroup, index) => {
@@ -34,12 +33,12 @@ export const Skills: React.FC = () => {
           return (
             <div
               key={skillGroup.category}
-              className="group relative bg-white rounded-2xl border-2 border-gray-200 p-6 hover:border-blue-400 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl card-hover"
+              className="group relative bg-white dark:bg-gray-800 rounded-2xl border-2 border-gray-200 dark:border-gray-700 p-6 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl card-hover"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Gradient Background on Hover */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${colorClass} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}
+                className={`absolute inset-0 bg-gradient-to-br ${colorClass} opacity-0 group-hover:opacity-5 dark:group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}
               ></div>
 
               <div className="relative z-10">
@@ -51,7 +50,7 @@ export const Skills: React.FC = () => {
                 </div>
 
                 {/* Category Title */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4 pb-3 border-b-2 border-gray-200 group-hover:border-blue-400 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 pb-3 border-b-2 border-gray-200 dark:border-gray-700 group-hover:border-blue-400 dark:group-hover:border-blue-500 transition-colors">
                   {skillGroup.category}
                 </h3>
 
@@ -60,7 +59,7 @@ export const Skills: React.FC = () => {
                   {skillGroup.items.map((skill, skillIndex) => (
                     <li
                       key={skill}
-                      className="flex items-center gap-3 text-gray-700 group-hover:text-gray-900 transition-colors"
+                      className="flex items-center gap-3 text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
                       style={{
                         animationDelay: `${index * 0.1 + skillIndex * 0.05}s`,
                       }}

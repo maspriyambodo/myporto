@@ -19,9 +19,9 @@ export const Button: React.FC<ButtonProps> = ({
     primary:
       'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:shadow-xl hover:from-blue-700 hover:to-blue-800',
     secondary:
-      'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-900 hover:from-gray-200 hover:to-gray-300 hover:shadow-lg',
+      'bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-900 dark:text-white hover:from-gray-200 hover:to-gray-300 dark:hover:from-gray-600 dark:hover:to-gray-700 hover:shadow-lg',
     outline:
-      'border-2 border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 hover:border-blue-600 hover:text-blue-600 hover:shadow-lg',
+      'border-2 border-gray-300 dark:border-gray-600 bg-transparent hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 hover:shadow-lg',
   };
 
   const sizes = {
@@ -47,7 +47,7 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, className = '' }) => (
   <div
-    className={`bg-white rounded-lg border border-gray-200 shadow-sm ${className}`}
+    className={`bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm ${className}`}
   >
     {children}
   </div>
@@ -72,7 +72,7 @@ export const Section: React.FC<SectionProps> = ({
 }) => (
   <section
     id={id}
-    className={`py-16 md:py-24 ${dark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} ${className}`}
+    className={`py-16 md:py-24 ${dark ? 'bg-gray-900 text-white' : 'bg-white dark:bg-gray-900 text-gray-900 dark:text-white'} ${className}`}
   >
     <div className="container mx-auto px-4">
       {(title || subtitle) && (
@@ -82,7 +82,7 @@ export const Section: React.FC<SectionProps> = ({
           )}
           {subtitle && (
             <p
-              className={`text-lg ${dark ? 'text-gray-400' : 'text-gray-600'} max-w-2xl mx-auto`}
+              className={`text-lg ${dark ? 'text-gray-400' : 'text-gray-600 dark:text-gray-400'} max-w-2xl mx-auto`}
             >
               {subtitle}
             </p>
