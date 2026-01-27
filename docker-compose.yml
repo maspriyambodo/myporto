@@ -1,11 +1,15 @@
-version: '3.8'
-
 services:
-  myporto_frontend:
+  myportofolio:
     build: .
-    ports:
-      - '3001:80'
-    restart: unless-stopped
+    networks:
+      - ternasys
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+#    ports:
+#      - "80:80"
 
 networks:
   ternasys:
