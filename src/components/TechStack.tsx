@@ -23,7 +23,7 @@ const tools = [
 export const TechStack: React.FC = () => {
   return (
     <Section
-      id="tech-stack"
+      id="techstack"
       className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 py-12"
     >
       <div className="text-center mb-8">
