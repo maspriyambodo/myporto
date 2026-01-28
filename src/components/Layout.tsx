@@ -5,7 +5,7 @@ import {
   X,
   Terminal,
   Github,
-  Linkedin,
+  LinkedinIcon,
   Mail,
   Moon,
   Sun,
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
                 <Terminal className="text-white" size={24} />
               </div>
               <span>
-                Dev<span className="text-blue-400">Ops</span>
+                Mas<span className="text-blue-400">Bodo</span>
               </span>
             </div>
             <p className="text-gray-400 max-w-md mb-6">
@@ -156,19 +156,19 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://github.com/maspriyambodo/"
                 className="p-3 bg-gray-800 hover:bg-blue-600 rounded-lg transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
               >
                 <Github size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/priyambodoss/"
                 className="p-3 bg-gray-800 hover:bg-blue-600 rounded-lg transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
               >
-                <Linkedin size={20} />
+                <LinkedinIcon size={20} />
               </a>
               <a
-                href="#"
+                href="mailto:maspriyambodo@gmail.com"
                 className="p-3 bg-gray-800 hover:bg-blue-600 rounded-lg transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
               >
                 <Mail size={20} />
@@ -258,7 +258,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} DevOps Portfolio. All rights reserved.
+            © {new Date().getFullYear()} MasBodo Portfolio. All rights reserved.
           </div>
           <div className="text-gray-500 text-sm">
             Made with <span className="text-red-500">❤</span> using React &

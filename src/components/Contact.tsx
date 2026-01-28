@@ -43,13 +43,13 @@ export const Contact: React.FC = () => {
                     Email
                   </div>
                   <div className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    hello@example.com
+                    maspriyambodo@gmail.com
                   </div>
                 </div>
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/priyambodoss/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-5 rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
@@ -62,13 +62,13 @@ export const Contact: React.FC = () => {
                     LinkedIn
                   </div>
                   <div className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    linkedin.com/in/username
+                    linkedin.com/in/priyambodoss
                   </div>
                 </div>
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.com/maspriyambodo/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-4 p-5 rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
@@ -81,7 +81,7 @@ export const Contact: React.FC = () => {
                     GitHub
                   </div>
                   <div className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    github.com/username
+                    github.com/maspriyambodo
                   </div>
                 </div>
               </a>
