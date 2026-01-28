@@ -2,6 +2,7 @@ import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { lazy } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import './index.css';
 import RootLayout, { ErrorBoundary } from './layouts/RootLayout';
 import MainLayout from './components/Layout';
@@ -77,8 +78,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </StrictMode>
 );

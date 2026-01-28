@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Block access to sensitive files
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.log$
+
+# Allow access to CSS and JS files
+Allow: /assets/
+Allow: *.css
+Allow: *.js
+
+# Sitemap
+Sitemap: https://masbodo.dev/sitemap.xml

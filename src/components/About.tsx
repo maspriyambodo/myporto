@@ -1,8 +1,9 @@
 import React from 'react';
+import SEO from './SEO';
 import { Section } from './UI';
 import { Award, TrendingUp, Shield, Clock } from 'lucide-react';
 
-export const About: React.FC = () => {
+const About: React.FC = () => {
   const stats = [
     {
       icon: TrendingUp,
@@ -31,7 +32,14 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <Section id="about" title="About Me" dark>
+    <>
+      <SEO
+        title="About MasBodo - Fullstack Developer & SysAdmin Experience"
+        description="Learn about MasBodo's 5+ years of experience as a Fullstack Developer and SysAdmin. Expertise in React, Laravel, Golang, system administration, and scalable backend architectures."
+        keywords="about masbodo, fullstack developer experience, sysadmin background, software engineer biography, devops engineer"
+        canonical="/about"
+      />
+      <Section id="about" title="About Me" dark>
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="space-y-6 animate-slide-up">
@@ -92,6 +100,7 @@ export const About: React.FC = () => {
         </div>
       </div>
     </Section>
+    </>
   );
 };
 
