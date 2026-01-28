@@ -41,22 +41,6 @@ export const Hero: React.FC = () => {
             database architectures.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-scale-in">
-            <Button
-              size="lg"
-              className="gap-2 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-            >
-              Hire Me <ArrowRight size={20} />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-            >
-              View Projects
-            </Button>
-          </div>
-
           {/* Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <div className="group bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 card-hover">

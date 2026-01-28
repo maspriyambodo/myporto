@@ -75,7 +75,7 @@ export const Navbar: React.FC = () => {
             <Terminal className="text-white" size={20} />
           </div>
           <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-            Dev<span className="gradient-text-blue">Ops</span>
+            Mas<span className="gradient-text-blue">Bodo</span>
           </span>
         </Link>
 
@@ -91,34 +91,10 @@ export const Navbar: React.FC = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-blue-400 group-hover:w-full transition-all duration-300"></span>
             </a>
           ))}
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? (
-              <Sun className="w-5 h-5" />
-            ) : (
-              <Moon className="w-5 h-5" />
-            )}
-          </button>
-          <a
-            href="#contact"
-            className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-bold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
-            Hire Me
-          </a>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
-          </button>
           <button
             className="text-gray-900 dark:text-gray-100 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
             onClick={() => setIsOpen(!isOpen)}
@@ -141,13 +117,6 @@ export const Navbar: React.FC = () => {
               {link.name}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-center font-bold rounded-xl hover:shadow-lg transition-all"
-            onClick={() => setIsOpen(false)}
-          >
-            Hire Me
-          </a>
         </div>
       )}
     </nav>
