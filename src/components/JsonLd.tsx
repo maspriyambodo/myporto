@@ -58,7 +58,11 @@ interface BreadcrumbListSchema {
 
 interface JsonLdProps {
   type: 'Person' | 'Organization' | 'WebSite' | 'BreadcrumbList';
-  data: PersonSchema | OrganizationSchema | WebsiteSchema | BreadcrumbListSchema;
+  data:
+    | PersonSchema
+    | OrganizationSchema
+    | WebsiteSchema
+    | BreadcrumbListSchema;
 }
 
 const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
@@ -70,9 +74,7 @@ const JsonLd: React.FC<JsonLdProps> = ({ type, data }) => {
 
   return (
     <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLdData)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(jsonLdData)}</script>
     </Helmet>
   );
 };
@@ -82,16 +84,16 @@ export const PersonJsonLd: React.FC<{ data: PersonSchema }> = ({ data }) => (
   <JsonLd type="Person" data={data} />
 );
 
-export const OrganizationJsonLd: React.FC<{ data: OrganizationSchema }> = ({ data }) => (
-  <JsonLd type="Organization" data={data} />
-);
+export const OrganizationJsonLd: React.FC<{ data: OrganizationSchema }> = ({
+  data,
+}) => <JsonLd type="Organization" data={data} />;
 
 export const WebsiteJsonLd: React.FC<{ data: WebsiteSchema }> = ({ data }) => (
   <JsonLd type="WebSite" data={data} />
 );
 
-export const BreadcrumbJsonLd: React.FC<{ data: BreadcrumbListSchema }> = ({ data }) => (
-  <JsonLd type="BreadcrumbList" data={data} />
-);
+export const BreadcrumbJsonLd: React.FC<{ data: BreadcrumbListSchema }> = ({
+  data,
+}) => <JsonLd type="BreadcrumbList" data={data} />;
 
 export default JsonLd;

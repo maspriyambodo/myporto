@@ -19,13 +19,13 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "MasBodo - Fullstack Developer & SysAdmin",
-  description = "Professional Fullstack Web Developer & SysAdmin specializing in scalable backend systems, secure server environments, and optimized database architectures.",
-  keywords = "fullstack developer, web developer, sysadmin, backend developer, devops, react, laravel, golang",
-  image = "/vite.svg",
+  title = 'MasBodo - Fullstack Developer & SysAdmin',
+  description = 'Professional Fullstack Web Developer & SysAdmin specializing in scalable backend systems, secure server environments, and optimized database architectures.',
+  keywords = 'fullstack developer, web developer, sysadmin, backend developer, devops, react, laravel, golang',
+  image = '/vite.svg',
   url,
-  type = "website",
-  author = "MasBodo",
+  type = 'website',
+  author = 'MasBodo',
   publishedTime,
   modifiedTime,
   section,
@@ -34,8 +34,12 @@ const SEO: React.FC<SEOProps> = ({
   noindex = false,
   nofollow = false,
 }) => {
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://masbodo.dev';
-  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : siteUrl);
+  const siteUrl =
+    typeof window !== 'undefined'
+      ? window.location.origin
+      : 'https://masbodo.dev';
+  const currentUrl =
+    url || (typeof window !== 'undefined' ? window.location.href : siteUrl);
   const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
   const robotsContent = [
@@ -63,12 +67,17 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:url" content={currentUrl} />
       <meta property="og:site_name" content="MasBodo Portfolio" />
       {section && <meta property="article:section" content={section} />}
-      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
-      {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
       {author && <meta property="article:author" content={author} />}
-      {tags && tags.map(tag => (
-        <meta key={tag} property="article:tag" content={tag} />
-      ))}
+      {tags &&
+        tags.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />

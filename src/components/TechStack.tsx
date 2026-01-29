@@ -2,17 +2,41 @@ import React from 'react';
 import { Section } from './UI';
 
 const tools = [
-  { name: 'Laravel', color: 'from-red-500 to-red-600', bgColor: 'bg-red-50 dark:bg-red-900/20' },
-  { name: 'Golang', color: 'from-blue-400 to-cyan-500', bgColor: 'bg-blue-50 dark:bg-blue-900/20' },
-  { name: 'React', color: 'from-cyan-400 to-blue-500', bgColor: 'bg-cyan-50 dark:bg-cyan-900/20' },
-  { name: 'Docker', color: 'from-blue-500 to-blue-700', bgColor: 'bg-blue-50 dark:bg-blue-900/20' },
+  {
+    name: 'Laravel',
+    color: 'from-red-500 to-red-600',
+    bgColor: 'bg-red-50 dark:bg-red-900/20',
+  },
+  {
+    name: 'Golang',
+    color: 'from-blue-400 to-cyan-500',
+    bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+  },
+  {
+    name: 'React',
+    color: 'from-cyan-400 to-blue-500',
+    bgColor: 'bg-cyan-50 dark:bg-cyan-900/20',
+  },
+  {
+    name: 'Docker',
+    color: 'from-blue-500 to-blue-700',
+    bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+  },
   {
     name: 'Nginx',
     color: 'from-green-500 to-emerald-600',
     bgColor: 'bg-green-50 dark:bg-green-900/20',
   },
-  { name: 'Linux', color: 'from-gray-700 to-gray-900', bgColor: 'bg-gray-50 dark:bg-gray-800' },
-  { name: 'MySQL', color: 'from-blue-600 to-blue-800', bgColor: 'bg-blue-50 dark:bg-blue-900/20' },
+  {
+    name: 'Linux',
+    color: 'from-gray-700 to-gray-900',
+    bgColor: 'bg-gray-50 dark:bg-gray-800',
+  },
+  {
+    name: 'MySQL',
+    color: 'from-blue-600 to-blue-800',
+    bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+  },
   {
     name: 'PostgreSQL',
     color: 'from-blue-500 to-indigo-600',
@@ -30,7 +54,9 @@ export const TechStack: React.FC = () => {
         <h3 className="text-lg font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">
           Trusted Technologies
         </h3>
-        <p className="text-gray-600 dark:text-gray-400">Tools and frameworks I work with daily</p>
+        <p className="text-gray-600 dark:text-gray-400">
+          Tools and frameworks I work with daily
+        </p>
       </div>
       <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
         {tools.map((tool, index) => (

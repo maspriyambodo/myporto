@@ -40,66 +40,67 @@ const About: React.FC = () => {
         canonical="/about"
       />
       <Section id="about" title="About Me" dark>
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6 animate-slide-up">
-            <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-              Problem Solver at Heart,{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Engineer by Profession
-              </span>
-            </h3>
-            <p className="text-gray-300 leading-relaxed text-lg">
-              With over 5 years of experience in the tech industry, I bridge the
-              gap between complex backend logic and seamless user experiences.
-              My approach is rooted in efficiency, security, and scalability.
-            </p>
-            <p className="text-gray-300 leading-relaxed text-lg">
-              Whether it's architecting a microservices-based backend, hardening
-              a Linux server, or optimizing a complex database schema, I focus
-              on delivering high-impact solutions that solve real-world
-              problems.
-            </p>
-            <div className="pt-4">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-              >
-                Let's Work Together
-              </a>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-6 animate-slide-up">
+              <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                Problem Solver at Heart,{' '}
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  Engineer by Profession
+                </span>
+              </h3>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                With over 5 years of experience in the tech industry, I bridge
+                the gap between complex backend logic and seamless user
+                experiences. My approach is rooted in efficiency, security, and
+                scalability.
+              </p>
+              <p className="text-gray-300 leading-relaxed text-lg">
+                Whether it's architecting a microservices-based backend,
+                hardening a Linux server, or optimizing a complex database
+                schema, I focus on delivering high-impact solutions that solve
+                real-world problems.
+              </p>
+              <div className="pt-4">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                >
+                  Let's Work Together
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-2 gap-6 animate-scale-in">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="group relative p-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
-              >
-                {/* Gradient Overlay */}
+            <div className="grid grid-cols-2 gap-6 animate-scale-in">
+              {stats.map((stat, index) => (
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-                ></div>
-
-                <div className="relative z-10">
+                  key={index}
+                  className="group relative p-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-gray-700 hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl overflow-hidden"
+                >
+                  {/* Gradient Overlay */}
                   <div
-                    className={`inline-flex p-3 bg-gradient-to-br ${stat.color} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <stat.icon className="text-white" size={24} />
-                  </div>
-                  <div className="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-400 uppercase tracking-wider font-semibold">
-                    {stat.label}
+                    className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                  ></div>
+
+                  <div className="relative z-10">
+                    <div
+                      className={`inline-flex p-3 bg-gradient-to-br ${stat.color} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <stat.icon className="text-white" size={24} />
+                    </div>
+                    <div className="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-gray-400 uppercase tracking-wider font-semibold">
+                      {stat.label}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </Section>
+      </Section>
     </>
   );
 };
