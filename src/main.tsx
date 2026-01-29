@@ -13,6 +13,8 @@ const About = lazy(() => import('./components/About'));
 const Projects = lazy(() => import('./components/Projects'));
 const Skills = lazy(() => import('./components/Skills'));
 const Contact = lazy(() => import('./components/Contact'));
+const Blog = lazy(() => import('./components/Blog'));
+const BlogPost = lazy(() => import('./components/BlogPost'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
 const router = createBrowserRouter([
@@ -61,6 +63,22 @@ const router = createBrowserRouter([
             element: (
               <Suspense fallback={<div>Loading...</div>}>
                 <Contact />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'blog',
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <Blog />
+              </Suspense>
+            ),
+          },
+          {
+            path: 'blog/:slug',
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <BlogPost />
               </Suspense>
             ),
           },

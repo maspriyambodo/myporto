@@ -55,6 +55,7 @@ export const Navbar: React.FC = () => {
     { name: 'Skills', href: '#skills', isHash: true },
     { name: 'Services', href: '#services', isHash: true },
     { name: 'Projects', href: '#projects', isHash: true },
+    { name: 'Blog', href: '/blog', isHash: false },
     { name: 'Contact', href: '#contact', isHash: true },
   ];
 
