@@ -1,11 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Section, Card, Button } from './UI';
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
+import { contactApi } from '../services/api';
+import { Mail, Linkedin, Github, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export const Contact: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Message sent! (This is a dummy form)');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      await contactApi.submitMessage(formData);
+      setSubmitStatus({
+        type: 'success',
+        message: 'Message sent successfully! I\'ll get back to you soon.',
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again or contact me directly.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -90,6 +128,27 @@ export const Contact: React.FC = () => {
 
           {/* Contact Form */}
           <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 border-2 border-gray-200 dark:border-gray-700 shadow-xl animate-scale-in">
+            {submitStatus.type && (
+              <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${
+                submitStatus.type === 'success'
+                  ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
+                  : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
+              }`}>
+                {submitStatus.type === 'success' ? (
+                  <CheckCircle className="text-green-600 dark:text-green-400" size={20} />
+                ) : (
+                  <AlertCircle className="text-red-600 dark:text-red-400" size={20} />
+                )}
+                <p className={`text-sm font-medium ${
+                  submitStatus.type === 'success'
+                    ? 'text-green-800 dark:text-green-200'
+                    : 'text-red-800 dark:text-red-200'
+                }`}>
+                  {submitStatus.message}
+                </p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
@@ -102,8 +161,12 @@ export const Contact: React.FC = () => {
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all hover:border-gray-300 dark:hover:border-gray-500"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all hover:border-gray-300 dark:hover:border-gray-500 disabled:opacity-50"
                     placeholder="John Doe"
                   />
                 </div>
@@ -117,8 +180,12 @@ export const Contact: React.FC = () => {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all hover:border-gray-300 dark:hover:border-gray-500"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all hover:border-gray-300 dark:hover:border-gray-500 disabled:opacity-50"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -133,8 +200,12 @@ export const Contact: React.FC = () => {
                 <input
                   type="text"
                   id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all hover:border-gray-300 dark:hover:border-gray-500"
+                  disabled={isSubmitting}
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all hover:border-gray-300 dark:hover:border-gray-500 disabled:opacity-50"
                   placeholder="Project Inquiry"
                 />
               </div>
@@ -147,14 +218,23 @@ export const Contact: React.FC = () => {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   required
+                  disabled={isSubmitting}
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none hover:border-gray-300 dark:hover:border-gray-500"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none hover:border-gray-300 dark:hover:border-gray-500 disabled:opacity-50"
                   placeholder="Tell me about your project..."
                 ></textarea>
               </div>
-              <Button type="submit" className="w-full gap-2 shadow-xl">
-                <Send size={18} /> Send Message
+              <Button type="submit" disabled={isSubmitting} className="w-full gap-2 shadow-xl">
+                {isSubmitting ? (
+                  <Loader2 size={18} className="animate-spin" />
+                ) : (
+                  <Send size={18} />
+                )}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </div>

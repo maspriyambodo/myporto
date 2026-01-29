@@ -1,7 +1,7 @@
 import React from 'react';
 import { Section, Card } from './UI';
-import { services } from '../utils/data';
-import { Server, Code, Database, ArrowRight } from 'lucide-react';
+import { useServices } from '../hooks/useApi';
+import { Server, Code, Database, ArrowRight, Loader2 } from 'lucide-react';
 
 const iconMap: Record<string, any> = {
   Server: Server,
@@ -16,6 +16,53 @@ const serviceColors: Record<number, string> = {
 };
 
 export const Services: React.FC = () => {
+  const { data: services, loading, error } = useServices();
+
+  if (loading) {
+    return (
+      <Section
+        id="services"
+        title="Services"
+        subtitle="Specialized freelance services tailored for modern web applications and infrastructure."
+        dark
+      >
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="animate-spin text-blue-400" size={48} />
+        </div>
+      </Section>
+    );
+  }
+
+  if (error) {
+    return (
+      <Section
+        id="services"
+        title="Services"
+        subtitle="Specialized freelance services tailored for modern web applications and infrastructure."
+        dark
+      >
+        <div className="text-center py-20">
+          <p className="text-red-400">Failed to load services. Please try again later.</p>
+        </div>
+      </Section>
+    );
+  }
+
+  if (!services || services.length === 0) {
+    return (
+      <Section
+        id="services"
+        title="Services"
+        subtitle="Specialized freelance services tailored for modern web applications and infrastructure."
+        dark
+      >
+        <div className="text-center py-20">
+          <p className="text-gray-400">No services available at the moment.</p>
+        </div>
+      </Section>
+    );
+  }
+
   return (
     <Section
       id="services"
@@ -24,7 +71,7 @@ export const Services: React.FC = () => {
       dark
     >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {services.map((service, index) => {
+        {services.map((service: any, index: number) => {
           const Icon = iconMap[service.icon] || Code;
           const colorClass =
             serviceColors[index] || 'from-blue-500 to-blue-600';

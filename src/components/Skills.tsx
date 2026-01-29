@@ -1,7 +1,7 @@
 import React from 'react';
 import { Section, Card } from './UI';
-import { skills } from '../utils/data';
-import { Code, Database, Server, Wrench } from 'lucide-react';
+import { useSkills } from '../hooks/useApi';
+import { Code, Database, Server, Wrench, Loader2 } from 'lucide-react';
 
 const categoryIcons: Record<string, any> = {
   Frontend: Code,
@@ -18,6 +18,50 @@ const categoryColors: Record<string, string> = {
 };
 
 export const Skills: React.FC = () => {
+  const { data: skills, loading, error } = useSkills();
+
+  if (loading) {
+    return (
+      <Section
+        id="skills"
+        title="Technical Skills"
+        subtitle="A comprehensive overview of my technical expertise across the full stack and infrastructure."
+      >
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="animate-spin text-blue-600" size={48} />
+        </div>
+      </Section>
+    );
+  }
+
+  if (error) {
+    return (
+      <Section
+        id="skills"
+        title="Technical Skills"
+        subtitle="A comprehensive overview of my technical expertise across the full stack and infrastructure."
+      >
+        <div className="text-center py-20">
+          <p className="text-red-600 dark:text-red-400">Failed to load skills. Please try again later.</p>
+        </div>
+      </Section>
+    );
+  }
+
+  if (!skills || skills.length === 0) {
+    return (
+      <Section
+        id="skills"
+        title="Technical Skills"
+        subtitle="A comprehensive overview of my technical expertise across the full stack and infrastructure."
+      >
+        <div className="text-center py-20">
+          <p className="text-gray-600 dark:text-gray-400">No skills available at the moment.</p>
+        </div>
+      </Section>
+    );
+  }
+
   return (
     <Section
       id="skills"
@@ -56,7 +100,7 @@ export const Skills: React.FC = () => {
 
                 {/* Skills List */}
                 <ul className="space-y-3">
-                  {skillGroup.items.map((skill, skillIndex) => (
+                  {(skillGroup.items || [skillGroup.name]).map((skill: string, skillIndex: number) => (
                     <li
                       key={skill}
                       className="flex items-center gap-3 text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"

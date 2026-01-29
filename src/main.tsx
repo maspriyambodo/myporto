@@ -17,6 +17,12 @@ const Blog = lazy(() => import('./components/Blog'));
 const BlogPost = lazy(() => import('./components/BlogPost'));
 const NotFound = lazy(() => import('./components/NotFound'));
 
+// Admin components
+const AdminLayout = lazy(() => import('./components/admin/AdminLayout'));
+const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
+const AdminProjects = lazy(() => import('./components/admin/AdminProjects'));
+const AdminLogin = lazy(() => import('./components/admin/AdminLogin'));
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -84,6 +90,41 @@ const router = createBrowserRouter([
           },
         ],
       },
+    ],
+  },
+  {
+    path: '/admin/login',
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AdminLogin />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/admin',
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <AdminLayout />
+      </Suspense>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AdminDashboard />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'projects',
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <AdminProjects />
+          </Suspense>
+        ),
+      },
+      // Add more admin routes here as needed
     ],
   },
   {

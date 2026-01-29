@@ -1,9 +1,56 @@
 import React from 'react';
 import { Section, Card, Button } from './UI';
-import { projects } from '../utils/data';
-import { ExternalLink, Github } from 'lucide-react';
+import { useFeaturedProjects } from '../hooks/useApi';
+import { ExternalLink, Github, Loader2 } from 'lucide-react';
 
 export const Projects: React.FC = () => {
+  const { data: projects, loading, error } = useFeaturedProjects();
+
+  if (loading) {
+    return (
+      <Section
+        id="projects"
+        title="Featured Projects"
+        subtitle="A selection of my recent work, focusing on complex problem-solving and technical excellence."
+        className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
+      >
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="animate-spin text-blue-600" size={48} />
+        </div>
+      </Section>
+    );
+  }
+
+  if (error) {
+    return (
+      <Section
+        id="projects"
+        title="Featured Projects"
+        subtitle="A selection of my recent work, focusing on complex problem-solving and technical excellence."
+        className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
+      >
+        <div className="text-center py-20">
+          <p className="text-red-600 dark:text-red-400">Failed to load projects. Please try again later.</p>
+        </div>
+      </Section>
+    );
+  }
+
+  if (!projects || projects.length === 0) {
+    return (
+      <Section
+        id="projects"
+        title="Featured Projects"
+        subtitle="A selection of my recent work, focusing on complex problem-solving and technical excellence."
+        className="bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
+      >
+        <div className="text-center py-20">
+          <p className="text-gray-600 dark:text-gray-400">No projects available at the moment.</p>
+        </div>
+      </Section>
+    );
+  }
+
   return (
     <Section
       id="projects"
@@ -42,7 +89,7 @@ export const Projects: React.FC = () => {
                   {project.title}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
+                  {(project.technologies || project.techStack || []).map((tech: string) => (
                     <span
                       key={tech}
                       className="px-3 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold rounded-lg uppercase tracking-wider border border-blue-200 dark:border-blue-800 hover:scale-110 transition-transform duration-300"
