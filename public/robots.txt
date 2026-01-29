@@ -14,4 +14,4 @@ Allow: *.css
 Allow: *.js
 
 # Sitemap
-Sitemap: https://masbodo.dev/sitemap.xml
+Sitemap: https://masbodo.com/sitemap.xml
