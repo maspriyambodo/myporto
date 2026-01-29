@@ -36,7 +36,7 @@ CREATE TABLE blog_posts (
     id INT PRIMARY KEY AUTO_INCREMENT,
     slug VARCHAR(255) UNIQUE NOT NULL,
     title VARCHAR(500) NOT NULL,
-    excerpt TEXT NOT NULL,
+    excerpt VARCHAR(1000) NOT NULL,
     content LONGTEXT NOT NULL,
     author_id INT NOT NULL,
     category_id INT NOT NULL,
@@ -292,9 +292,6 @@ INSERT INTO blog_tags (name, slug) VALUES
 ('Nginx', 'nginx'),
 ('Database', 'database');
 
--- Insert sample blog posts (you would need to insert actual content)
--- Note: This is just a structure example. In a real scenario, you'd insert the full content.
-
 -- Insert site settings
 INSERT INTO site_settings (setting_key, setting_value, setting_type, description) VALUES
 ('site_title', 'MasBodo - Fullstack Developer & SysAdmin', 'string', 'Website title'),
@@ -305,7 +302,7 @@ INSERT INTO site_settings (setting_key, setting_value, setting_type, description
 
 -- Create indexes for better performance
 CREATE INDEX idx_blog_posts_published ON blog_posts(published_at, is_published);
-CREATE INDEX idx_blog_posts_search ON blog_posts(title, excerpt, content(500));
+CREATE INDEX idx_blog_posts_search ON blog_posts(title(255), excerpt(255), content(255));
 CREATE INDEX idx_contact_messages_status ON contact_messages(is_read, is_responded, created_at);
 CREATE INDEX idx_page_views_analytics ON page_views(page_type, viewed_at);
 
@@ -390,7 +387,7 @@ DELIMITER //
 CREATE PROCEDURE create_blog_post(
     IN p_slug VARCHAR(255),
     IN p_title VARCHAR(500),
-    IN p_excerpt TEXT,
+    IN p_excerpt VARCHAR(1000),
     IN p_content LONGTEXT,
     IN p_author_id INT,
     IN p_category_id INT,
