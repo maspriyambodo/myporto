@@ -1,8 +1,38 @@
 services:
-  myportofolio:
-    build: .
+  portfolio-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_USER=portfolio_user
+      - DB_PASSWORD=secure_password_here
+      - DB_NAME=portfolio_db
+      - PORT=3001
+      - FRONTEND_URL=http://localhost:5173
+      - JWT_SECRET=your_jwt_secret_here
     networks:
-      - ternasys
+      - portfolio_network
+    volumes:
+      - ./backend/uploads:/app/uploads
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  portfolio-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - VITE_API_URL=http://localhost:3001/api
+    networks:
+      - portfolio_network
+    depends_on:
+      - portfolio-backend
     deploy:
       resources:
         limits:
@@ -12,6 +42,8 @@ services:
 #      - "80:80"
 
 networks:
+  portfolio_network:
+    driver: bridge
   ternasys:
       name: nginx-proxy_network
       external: true
